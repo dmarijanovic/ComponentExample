@@ -1,0 +1,28 @@
+﻿@model Enterwell.Models.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Summary</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Total users count</div>
+    <div class="panel-body">
+        @Model.TotalUserCount
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Total invoices count</div>
+    <div class="panel-body">
+        @Model.TotalInvoiceCount
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Total pending invoices count</div>
+    <div class="panel-body">
+        @Model.TotalPendingInvoiceCount
+    </div>
+</div>

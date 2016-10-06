@@ -1,0 +1,16 @@
+﻿@model DateTime
+ 
+<div class='input-group date' id='datetimepicker'>
+    <input type='text' class="form-control" value="@Model" name="@ViewData.TemplateInfo.HtmlFieldPrefix" />
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+</script>

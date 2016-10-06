@@ -1,0 +1,104 @@
+﻿@model Enterwell.Models.Invoice
+
+@{
+    ViewBag.Title = "Details";
+    string currencySimbol = @Model.CurrencySimbol;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Due)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Due)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VatModuleIdentifier)
+        </dt>
+
+        <dd>
+            @ViewBag.VatDisplayName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSum)
+            @currencySimbol
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSumWithVat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSumWithVat)
+            @currencySimbol
+        </dd>
+
+    </dl>
+
+    <table class="table">
+
+        @* Generate headers for table *@
+        @Html.DisplayFor(model => model.Items, "InvoiceItemTableHeader")
+
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                    @currencySimbol
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalSum)
+                    @currencySimbol
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
